@@ -1,1 +1,1 @@
-# dailylist
+# Daily List app for you todos.
