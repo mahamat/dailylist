@@ -1,0 +1,99 @@
+// Form elements
+//--------------
+
+.form-group {
+  margin-bottom: 15px;
+  .text-input,
+  .datetime-text {
+    margin: 0;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    color: #fff!important;
+    border-bottom: 1px solid rgba(#d1d1d1, 0.5);
+    &::-webkit-input-placeholder {
+      color: rgba(#fff, 0.5);
+    }
+  }
+  select {
+    margin: 0;
+    padding: 0 10px;
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    border: 1px solid rgba(#d1d1d1, 0.5);
+    border-width: 0 0 1px 0;
+    background: transparent;
+    border-radius: 0;
+  }
+  ion-datetime {
+    padding: 0 !important;
+    position:relative;
+  }
+  &.error {
+    .text-input,
+    select {
+      border-bottom-color: color($colors, danger);
+      &::-webkit-input-placeholder {
+        color: color($colors, danger);
+      }
+    }
+  }
+}
+
+// SVG Icons
+//----------
+
+.dl-svgicon {
+  width: 100%;
+  height: 100%;
+  &.menu {
+    background: url("../assets/icons/menu.svg") no-repeat top center;
+    background-size: cover;
+  }
+}
+
+// Buttons
+//----------
+
+.dl-close-btn {
+  ion-icon {
+    font-size: 30px;
+  }
+}
+
+// Ion List
+//----------
+
+ion-list {
+  margin: 0 !important;
+  ion-item {
+    padding-left: 0 !important;
+    font-size: 16px;
+  }
+  ion-item-sliding {
+    ion-item-options {
+      border-bottom: 0.55px solid rgba(#000000, 0.2) !important;
+      button {
+        padding: 0 20px !important;
+        ion-icon {
+          font-size: 20px;
+          padding: 0 !important;
+        }
+      }
+    }
+    .item-block {
+      padding-left: 0;
+      .item-inner {
+        border-bottom: 0.55px solid rgba(#000000, 0.2) !important;
+        padding-right: 0 !important;
+      }
+    }
+    &:last-child {
+      .item-block {
+        border-bottom: 0 !important;
+      }
+    }
+  }
+}

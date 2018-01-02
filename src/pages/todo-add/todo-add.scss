@@ -1,0 +1,15 @@
+page-todo-add {
+  ion-header {
+    .toolbar-background {
+      border:0!important;
+    }
+  }
+  ion-content {
+    background-color: color($colors, secondary) !important;
+    .dl-icon {
+      font-size:40px;
+      color:#fff;
+      opacity:0.5;
+    }
+  }
+}

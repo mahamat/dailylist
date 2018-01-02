@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add New Todo</ion-title>
+    <ion-buttons end>
+      <button class="dl-close-btn" ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center class="dl-icon">
+    <ion-icon name="paper"></ion-icon>
+  </div>
+  <div class="dl-form">
+    <span class="error" *ngIf="error">{{ error }}</span>
+    <form (submit)="onSubmit(addTodoForm)" [formGroup]="addTodoForm">
+      <div class="form-group" [class.error]="!addTodoForm.controls['name'].valid">
+        <ion-input type="text" placeholder="Name" [formControl]="addTodoForm.controls['name']" name="name" required></ion-input>
+      </div>
+      <div class="form-group" [class.error]="!addTodoForm.controls['category'].valid">
+        <select name="category" [formControl]="addTodoForm.controls['category']" required>
+          <option value="">Select Category</option>
+          <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" name="time" [formControl]="addTodoForm.controls['time']" placeholder="Time">
+        </ion-datetime>
+      </div>
+      <button ion-button block type="submit">ADD TODO</button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>LOGIN</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce>
+  <div class="login-form">
+    <span class="error" *ngIf="error">{{ error }}</span>
+    <form (submit)="onLogin(loginForm)" [formGroup]="loginForm">
+      <div class="form-group" [class.error]="!loginForm.controls['email'].valid">
+        <ion-input type="email" placeholder="E-mail" [formControl]="loginForm.controls['email']" name="email" required></ion-input>
+      </div>
+      <div class="form-group" [class.error]="!loginForm.controls['password'].valid">
+        <ion-input type="password" placeholder="password" [formControl]="loginForm.controls['password']" name="password" required></ion-input>
+      </div>
+      <button ion-button block type="submit">LOGIN</button>
+    </form>
+    <div text-center padding-vertical>
+      <a tappable (click)="loginAnonymously()">Skip Login</a>
+    </div>
+    <div text-center>
+      <a tappable (click)="signUp()">No account?
+        <strong>Create One</strong>
+      </a>
+    </div>
+  </div>
+</ion-content>

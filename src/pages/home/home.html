@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="dl-svgicon menu"></i>
+    </button>
+  </ion-navbar>
+  <div class="dl-home-header" padding>
+    <h2>Your Todos</h2>
+    <time>{{date}}</time>
+  </div>
+</ion-header>
+<ion-content padding no-bounce>
+  <ion-list>
+    <ion-item-sliding *ngFor="let todo of todos">
+      <ion-item>
+        <ion-icon name="{{todo.category.icon}}" item-start></ion-icon>
+        <h3><strong>{{todo.name}}</strong></h3>
+        <time>{{todo.time | date: 'medium'}}</time>
+        <p>{{todo.category.name}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="onComplete(todo)">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="onDelete(todo)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+</ion-content>
+<ion-footer padding>
+  <div class="dl-todos-completed" ion-fixed>Completed <span>{{completed}}</span></div>
+  <button ion-button float-end (click)="onTodoAdd()" class="dl-add-todo">
+      <ion-icon name="add"></ion-icon>
+    </button>
+</ion-footer>
