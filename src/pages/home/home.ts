@@ -53,8 +53,9 @@ export class HomePage {
     todoAddModal.present();
   }
 
-  onComplete(obj: any) {
-    this.fsService.update(obj);
+  onComplete(id: any) {
+    const data = {id, completed:true};
+    this.fsService.update(data);
   }
   onDelete(obj: any) {
     const { id } = obj;

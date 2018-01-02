@@ -7,12 +7,12 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { firebaseConfig } from '../../config/environment';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { FirestoreServiceProvider } from '../providers/firestore-service/firestore-service';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { FirestoreServiceProvider } from '../providers/firestore-service/firesto
     }),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
