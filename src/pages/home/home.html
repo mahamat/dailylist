@@ -7,6 +7,14 @@
   <div class="dl-home-header" padding>
     <h2>Your Todos</h2>
     <time>{{date}}</time>
+    <div class="dl-home-counts">
+      <ul>
+        <li *ngFor="let category of categoryCounts">
+          <strong>{{category.length}}</strong>
+          <br>{{category.name}}
+        </li>
+      </ul>
+    </div>
   </div>
 </ion-header>
 <ion-content padding no-bounce>
@@ -14,7 +22,9 @@
     <ion-item-sliding *ngFor="let todo of todos">
       <ion-item>
         <ion-icon name="{{todo.category?.icon}}" item-start></ion-icon>
-        <h3><strong>{{todo.name}}</strong></h3>
+        <h3>
+          <strong>{{todo.name}}</strong>
+        </h3>
         <time>{{todo.time | date: 'medium'}}</time>
         <p>{{todo.category?.name}}</p>
       </ion-item>
@@ -28,11 +38,13 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  
+
 </ion-content>
 <ion-footer padding>
-  <div class="dl-todos-completed" ion-fixed>Completed <span>{{completed}}</span></div>
+  <div class="dl-todos-completed" ion-fixed>Completed
+    <span>{{completed}}</span>
+  </div>
   <button ion-button float-end (click)="onTodoAdd()" class="dl-add-todo">
-      <ion-icon name="add"></ion-icon>
-    </button>
+    <ion-icon name="add"></ion-icon>
+  </button>
 </ion-footer>

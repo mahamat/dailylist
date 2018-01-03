@@ -20,6 +20,7 @@ export class HomePage {
   categories: ICategory[];
   date: String = new Date().toDateString();
   completed: number = 0;
+  categoryCounts: Array<{ name: string; length: number }> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -40,7 +41,7 @@ export class HomePage {
           return doc;
         });
         this.completed = docs.filter(item => item.completed).length;
-        
+        this.countCategories(this.categories, this.todos);
       });
   }
 
@@ -54,7 +55,7 @@ export class HomePage {
   }
 
   onComplete(id: any) {
-    const data = {id, completed:true};
+    const data = { id, completed: true };
     this.fsService.update(data);
   }
   onDelete(obj: any) {
@@ -62,5 +63,17 @@ export class HomePage {
     if (id) {
       this.fsService.delete(id);
     }
+  }
+
+  countCategories(categories: ICategory[], todos: any[]) {
+    this.categoryCounts = categories.reduce((result, b) => {
+      result.push({
+        name: b.name,
+        length: todos.filter(todo => {
+          return todo.category.id == b.id;
+        }).length
+      });
+      return result;
+    }, []);
   }
 }
